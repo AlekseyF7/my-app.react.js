@@ -1,6 +1,21 @@
-import Styles from './Header.module.css'
-
+'use client';
+import { useState } from 'react';
+import Styles from './Header.module.css';
+import { Overlay } from 'C:/Users/Alex/my-app/app/components/Overlay/Overlay.jsx'
+import { Popup} from 'C:/Users/Alex/my-app/app/components/Popup/Popup.jsx'
+import { AuthForm } from 'C:/Users/Alex/my-app/app/components/AuthForm/AuthForm.jsx'
+import { event } from 'jquery';
 export const Header = () => {
+
+  const [popupIsOpened, setPopupIsOpened] = useState(false);
+
+  const openPopup = () => {
+    setPopupIsOpened(!popupIsOpened);
+  }
+
+  
+
+
   return (
     <header className={Styles['header']}>
       <a href="./index.html" className={Styles['logo']}>
@@ -43,10 +58,16 @@ export const Header = () => {
             </a>
           </li>
         </ul>
-        <div className={Styles['auth']}>
-          <button className={Styles['auth__button']}>Войти</button>
+        <div className={Styles["auth"]}>
+          <button className={Styles["auth__button"]} onClick={openPopup}>
+            Войти
+          </button>
         </div>
       </nav>
+      <Overlay  />
+      {popupIsOpened && <Popup>
+          <AuthForm />
+      </Popup>}
     </header>
   )
 }

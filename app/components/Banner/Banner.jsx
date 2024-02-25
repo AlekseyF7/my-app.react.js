@@ -18,7 +18,7 @@ export const Banner = () => {
             <img
                 src="/public/images/banner-illustration.jpg"
                 alt="Рука, утопленная в желтом фоне"
-                class="banner__image"
+                className="banner__image"
             />
         </section>
     )
